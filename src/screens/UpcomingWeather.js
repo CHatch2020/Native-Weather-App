@@ -4,7 +4,6 @@ import React from 'react'
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
   FlatList,
   StatusBar,
   ImageBackground
@@ -67,7 +66,6 @@ const UpcomingWeather = () => {
         source={require('../../assets/Clouds.jpg')}
         style={image}
       >
-        <Text>Upcoming Weather</Text>
         <FlatList
           data={DATA}
           renderItem={renderItem}
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: 'royalblue'
   },
   image: {
     flex: 1,

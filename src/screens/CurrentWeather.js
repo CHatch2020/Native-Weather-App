@@ -1,5 +1,12 @@
+/* eslint-disable no-undef */
 import React from 'react'
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  ImageBackground
+} from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import RowText from '../components/RowText'
 
@@ -13,29 +20,35 @@ const CurrentWeather = () => {
     highlow,
     bodyWrapper,
     description,
-    message
+    message,
+    image
   } = styles
   return (
     <SafeAreaView style={wrapper}>
-      <View style={container}>
-        <Feather name="sun" size={100} color="black" />
-        <Text style={temp}>6</Text>
-        <Text style={feels}>Feels Like 5</Text>
+      <ImageBackground
+        source={require('../../assets/Current.jpg')}
+        style={image}
+      >
+        <View style={container}>
+          <Feather name="sun" size={100} color="black" />
+          <Text style={temp}>6</Text>
+          <Text style={feels}>Feels Like 5</Text>
+          <RowText
+            messageOne={'High: 8'}
+            messageTwo={'Low: 6'}
+            containerStyles={highLowWrapper}
+            messageOneStyles={highlow}
+            messageTwoStyles={highlow}
+          />
+        </View>
         <RowText
-          messageOne={'High: 8'}
-          messageTwo={'Low: 6'}
-          containerStyles={highLowWrapper}
-          messageOneStyles={highlow}
-          messageTwoStyles={highlow}
+          messageOne={'Its Sunny'}
+          messageTwo={'Its perfect t-shirt weather'}
+          containerStyles={bodyWrapper}
+          messageOneStyles={description}
+          messageTwoStyles={message}
         />
-      </View>
-      <RowText
-        messageOne={'Its Sunny'}
-        messageTwo={'Its perfect t-shirt weather'}
-        containerStyles={bodyWrapper}
-        messageOneStyles={description}
-        messageTwoStyles={message}
-      />
+      </ImageBackground>
     </SafeAreaView>
   )
 }
@@ -47,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   wrapper: {
-    backgroundColor: 'pink',
+    backgroundColor: 'beige',
     flex: 1
   },
   temp: {
@@ -76,6 +89,10 @@ const styles = StyleSheet.create({
   },
   message: {
     fontSize: 30
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover'
   }
 })
 export default CurrentWeather

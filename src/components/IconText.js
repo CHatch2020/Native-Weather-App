@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     container: {
-        alignItems: 'center'
+        alignItems: 'center',
     }
 })
 export default IconText;

@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import CurrentWeather from './src/components/CurrentWeather';
+import CurrentWeather from './src/screens/CurrentWeather';
+import UpcomingWeather from './src/screens/UpcomingWeather';
+import City from './src/screens/City';
 
 const App = () => {
   return (

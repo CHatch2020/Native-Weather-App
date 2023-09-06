@@ -26,17 +26,18 @@ const City = () => {
   return (
     <SafeAreaView style={container}>
       <ImageBackground source={require('../../assets/City.jpg')} style={image}>
+        <Text style={[cityName, cityText]}>London</Text>
+        <Text style={[countryName, cityText]}>UK</Text>
+
+        <View style={[popWrapper, rowLayout]}>
+          <IconText
+            iconName={'user'}
+            iconColor={'beige'}
+            bodyText={'8000'}
+            bodyTextStyles={popText}
+          />
+        </View>
         <View style={group}>
-          <Text style={[cityName, cityText]}>London</Text>
-          <Text style={[countryName, cityText]}>UK</Text>
-          <View style={[popWrapper, rowLayout]}>
-            <IconText
-              iconName={'user'}
-              iconColor={'red'}
-              bodyText={'8000'}
-              bodyTextStyles={popText}
-            />
-          </View>
           <View style={[riseSetWrapper, rowLayout]}>
             <IconText
               iconName={'sunrise'}
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
   cityName: {
-    fontSize: 40
+    fontSize: 35
   },
   countryName: {
     fontSize: 30
@@ -78,14 +79,14 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   popWrapper: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30
   },
   popText: {
     fontSize: 25,
     marginLeft: 7.5,
-    color: 'red'
+    color: 'beige',
   },
   riseSetWrapper: {
     justifyContent: 'space-around',
@@ -100,7 +101,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   group: {
-    justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 30
   }
 })
 export default City

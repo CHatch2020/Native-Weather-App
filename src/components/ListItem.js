@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 5,
     borderColor: 'royalblue',
-    borderRadius: 10,
-    backgroundColor: 'beige'
+    borderRadius: 20,
+    backgroundColor: 'aliceblue'
   },
   temp: {
     color: 'black',
-    fontSize: 20
+    fontSize: 20,
   },
   date: {
     color: 'black',

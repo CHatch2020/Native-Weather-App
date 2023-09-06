@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
   },
   temp: {
     color: 'black',
-    fontSize: 48
+    fontSize: 48,
+    marginTop: 15
   },
   feels: {
     color: 'black',
@@ -76,7 +77,8 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   highLowWrapper: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    gap: 15
   },
   bodyWrapper: {
     justifyContent: 'flex-end',

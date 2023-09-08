@@ -14,7 +14,6 @@ const App = () => {
   const [error, setError] = useState(null)
   console.log(TEST_KEY);
   
-  
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()

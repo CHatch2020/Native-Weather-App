@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React from 'react'
 import {
@@ -9,6 +10,7 @@ import {
 } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import RowText from '../components/RowText'
+import { weatherType } from '../utils/WeatherType'
 
 const CurrentWeather = () => {
   const {
@@ -43,7 +45,7 @@ const CurrentWeather = () => {
         </View>
         <RowText
           messageOne={'Its Sunny'}
-          messageTwo={'Its perfect t-shirt weather'}
+          messageTwo={weatherType['Thunderstorm'].message}
           containerStyles={bodyWrapper}
           messageOneStyles={description}
           messageTwoStyles={message}

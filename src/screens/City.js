@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 import React from 'react'
 import {
@@ -8,8 +9,9 @@ import {
   View
 } from 'react-native'
 import IconText from '../components/IconText'
+import moment from 'moment'
 
-const City = () => {
+const City = ({ weatherData }) => {
   const {
     container,
     cityName,
@@ -23,17 +25,19 @@ const City = () => {
     rowLayout,
     group
   } = styles
+
+  const { name, country, population, sunrise, sunset } = weatherData
   return (
     <SafeAreaView style={container}>
       <ImageBackground source={require('../../assets/City.jpg')} style={image}>
-        <Text style={[cityName, cityText]}>London</Text>
-        <Text style={[countryName, cityText]}>UK</Text>
+        <Text style={[cityName, cityText]}>{name}</Text>
+        <Text style={[countryName, cityText]}>{country}</Text>
 
         <View style={[popWrapper, rowLayout]}>
           <IconText
             iconName={'user'}
             iconColor={'beige'}
-            bodyText={'8000'}
+            bodyText={`Population: ${population}`}
             bodyTextStyles={popText}
           />
         </View>
@@ -42,13 +46,13 @@ const City = () => {
             <IconText
               iconName={'sunrise'}
               iconColor={'white'}
-              bodyText={'06:12:43am'}
+              bodyText={moment(sunrise).format('hh:mm a')}
               bodyTextStyles={riseSetText}
             />
             <IconText
               iconName={'sunset'}
               iconColor={'white'}
-              bodyText={'19:43:12pm'}
+              bodyText={moment(sunset).format('hh:mm a')}
               bodyTextStyles={riseSetText}
             />
           </View>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React from 'react'
@@ -12,11 +13,11 @@ import { Feather } from '@expo/vector-icons'
 import RowText from '../components/RowText'
 import { weatherType } from '../utils/WeatherType'
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ weatherData }) => {
   const {
     wrapper,
     container,
-    temp,
+    tempStyles,
     feels,
     highLowWrapper,
     highlow,
@@ -25,27 +26,43 @@ const CurrentWeather = () => {
     message,
     image
   } = styles
+
+  const {
+    main: { temp, feels_like, temp_max, temp_min },
+    weather
+  } = weatherData
+
+  const weatherCondition = weather[0].main
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView
+      style={[
+        wrapper,
+        { backgroundColor: weatherType[weatherCondition].backgroundColor }
+      ]}
+    >
       <ImageBackground
         source={require('../../assets/Current.jpg')}
         style={image}
       >
         <View style={container}>
-          <Feather name="sun" size={100} color="black" />
-          <Text style={temp}>6</Text>
-          <Text style={feels}>Feels Like 5</Text>
+          <Feather
+            name={weatherType[weatherCondition].icon}
+            size={100}
+            color="black"
+          />
+          <Text style={tempStyles}>{`${Math.round(temp)}°`}</Text>
+          <Text style={feels}>{`Feels like: ${Math.round(feels_like)}°`}</Text>
           <RowText
-            messageOne={'High: 8'}
-            messageTwo={'Low: 6'}
+            messageOne={`High: ${Math.round(temp_max)}° `}
+            messageTwo={`Low: ${Math.round(temp_min)}°`}
             containerStyles={highLowWrapper}
             messageOneStyles={highlow}
             messageTwoStyles={highlow}
           />
         </View>
         <RowText
-          messageOne={'Its Sunny'}
-          messageTwo={weatherType['Thunderstorm'].message}
+          messageOne={weather[0].description}
+          messageTwo={weatherType[weatherCondition].message}
           containerStyles={bodyWrapper}
           messageOneStyles={description}
           messageTwoStyles={message}
@@ -65,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'beige',
     flex: 1
   },
-  temp: {
+  tempStyles: {
     color: 'black',
     fontSize: 48,
     marginTop: 15
